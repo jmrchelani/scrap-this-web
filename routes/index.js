@@ -29,7 +29,6 @@ router.get('/', function (req, res, next) {
             args: ['--no-sandbox']
           }, 
           scrollToBottom: {
-            timeout: 100000,
             viewportN: 10
           } 
         })
