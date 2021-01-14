@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 80;
 
 var indexRouter = require('./routes/index');
 
