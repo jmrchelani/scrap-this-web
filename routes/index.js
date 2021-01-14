@@ -44,6 +44,14 @@ router.get('/', function (req, res, next) {
         const stream = fs.createWriteStream(dest);
         const archive = archiver('zip', { zlib: { level: 9 } });
         console.log("CHECK 4");
+
+        stream.pipe(res).once("close", function () {
+          console.log("CHECK 8");
+          stream.destroy(); // makesure stream closed, not close if download aborted.
+          
+          deleteFile(filenamed);
+        });
+
         archive.on('error', function (err) {
           throw err;
         });
@@ -75,5 +83,14 @@ router.get('/', function (req, res, next) {
   }
 });
 
+function deleteFile (file) { 
+  fs.unlink(file, function (err) {
+      if (err) {
+          console.error(err.toString());
+      } else {
+          console.warn(file + ' deleted');
+      }
+  });
+}
 
 module.exports = router;
