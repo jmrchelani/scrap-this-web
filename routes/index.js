@@ -6,7 +6,7 @@ var path = require('path');
 const archiver = require('archiver');
 
 router.get('/', function (req, res, next) {
-  var str = req.params.url;
+  var str = req.query.url;
   var filename = str.substring(str.indexOf(".") + 1, str.lastIndexOf("."));
   var filenamed = filename + '.zip';
   
