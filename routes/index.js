@@ -24,7 +24,8 @@ router.get('/', function (req, res, next) {
       plugins: [
         new PuppeteerPlugin({
           launchOptions: {
-            headless: true
+            headless: true,
+            args: ['--no-sandbox']
           }, 
           scrollToBottom: {
             timeout: 10000,
