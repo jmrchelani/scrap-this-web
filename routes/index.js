@@ -11,6 +11,7 @@ var counter = 0;
 router.get('/', function (req, res, next) {
   var str = req.query.url;
   //var filename = str.substring(str.indexOf(".") + 1, str.lastIndexOf("."));
+  if(str == null) res.redirect('https://github.com/jmrchelani/scrap-this-web');
   var filename = extractRootDomain(str);
   filename = filename + counter;
   var filenamed = filename + "-"+ counter++ + '.zip';
